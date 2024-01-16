@@ -535,7 +535,16 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-.bg-sky-700 {
+.bg-emerald-600 {
   --tw-bg-opacity: 1;
-  background-color: rgb(3 105 161 / var(--tw-bg-opacity));
+  background-color: rgb(5 150 105 / var(--tw-bg-opacity));
+}
+
+.bg-emerald-600\/50 {
+  background-color: rgb(5 150 105 / 0.5);
+}
+
+.bg-emerald-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(4 120 87 / var(--tw-bg-opacity));
 }

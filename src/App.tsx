@@ -4,7 +4,7 @@ import Main from './components/Main';
 
 function App() {
   return (
-    <div>
+    <div className="bg-emerald-700">
       <Main />
     </div>
   );
