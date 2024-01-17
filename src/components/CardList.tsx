@@ -1,8 +1,12 @@
 import '../output.css';
+import { useState } from 'react';
+import Card from './Card';
 
-export default function CardList() {
+export default function CardList(props: {charType: string}) {
+    const [cards, setCards] = useState();
+
     return (
-        <div>
+        <div id="CardList">
             
         </div>
     )
