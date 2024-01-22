@@ -3,11 +3,11 @@ export class Card {
         public charType = "",
         public firstName ="",
         public lastName = "",
-        public gender = "",
+        public genderPres = "",
         public race = "",
         public charClass = "",
-        public charSubClass = "",
-        public problem = "",
+        public background = "",
+        public challenge = "",
         public goal = "",
         public patron = "", 
         public misc = "",
@@ -19,14 +19,15 @@ export class Card {
     }
 
     public shortDescriptor() {
-        if (this.charSubClass === "") {
-            return this.gender + " " + this.race + " " + this.charClass;
-        }
-        return this.gender + " " + this.race + " " + this.charSubClass + " " + this.charClass;
+        return this.genderPres + " " + this.race + " " + this.charClass;
+    }
+
+    public charHistory() {
+        return "they spent time as a " + this.background;
     }
 
     public motivation() {
-        return "seeks to " + this.goal + " for " + this.patron + " and must " + this.problem;
+        return "seeks to " + this.goal + " for " + this.patron + " and is " + this.challenge;
     }
 
     public references () {
@@ -47,5 +48,33 @@ export class Card {
 
     public setLastName(props:string) {
         this.lastName = props;
+    }
+
+    public setGenderPres(props: string) {
+        this.genderPres = props;
+    }
+
+    public setRace(props: string) {
+        this.race = props;
+    }
+
+    public setClass(props: string) {
+        this.charClass = props;
+    }
+
+    public setBackground(props: string) {
+        this.background = props;
+    }
+
+    public setChallenge(props: string) {
+        this.challenge = props;
+    }
+
+    public setGoal(props: string) {
+        this.goal = props;
+    }
+
+    public addReference(props: string) {
+        this.pageRef += props + " ";
     }
 }

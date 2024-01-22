@@ -5,12 +5,26 @@ import CharCard from './Card';
 /*model imports*/
 import { Card } from '../models/Card';
 /*data imports*/
-import lNames from '../data/surnames.json';
+import dataSurname from '../data/surnames.json';
+import dataRace from '../data/race.json';
+import dataClass from '../data/class.json';
+import dataBackground from '../data/background.json';
+import dataChallenge from '../data/challenge.json';
+import dataGoal from '../data/goal.json';
+
 
 export default function Main() {
     const [charType, setCharType] = useState<string>('');
     const [charList, setCharList] = useState<Card[]>([]);
-    const surnames = lNames.Surnames;
+    const [count, setCount] = useState(0);
+    const surnames = dataSurname.Surnames;
+    const races = dataRace.Race;
+    const classes = dataClass.Class;
+    const backgrounds = dataBackground.Background;
+    const challenges = dataChallenge.Challenge;
+    const goals = dataGoal.Goal;
+    const genders = ['masculine', 'feminine', 'androgynous'];
+
     const GenerateNewChar = (e: SyntheticEvent) => {
         /*
             This function generates the card by picking random elements 
@@ -20,17 +34,22 @@ export default function Main() {
         /* verify charType */
         var card = new Card();
         card.setHeader(charType);
-        card.setLastName(surnames[Math.floor(Math.random() * surnames.length -1)]);
-        /* randomly determine 
-            1. fname and lname
-            2. gender, race and class
-            3. problem
-            4. goal
-            5. patron if applicable
-        */
+        /*Name*/
+        card.setLastName(surnames[Math.floor(Math.random() * surnames.length )]);
+        /*Ancestry, gender presentation, class*/
+        card.setGenderPres(genders[Math.floor(Math.random() * genders.length)]);
+        card.setRace(races[Math.floor(Math.random() * races.length)]);
+        var classIndex = Math.floor(Math.random() * classes.length);
+        card.setClass(classes[classIndex][0]);
+        card.addReference(classes[classIndex][1])
+        /*Background, personal quirk*/
+        card.setBackground(backgrounds[Math.floor(Math.random() * backgrounds.length)]);
+        card.setChallenge(challenges[Math.floor(Math.random() * challenges.length)][0]);
+        card.setGoal(goals[Math.floor(Math.random() * goals.length)][0]);
         charList.unshift(card);
         setCharList(charList);
         setCharType('');
+        setCount(count + 1);
     }
     
 
@@ -60,7 +79,7 @@ export default function Main() {
                     (<p className="p-1 pl-2">Make a character by pressing the button</p>) : 
                     (
                         charList.map(charList => {
-                            return <CharCard char= {charList}/>
+                            return <CharCard char= {charList} key = {count} />
                         })
                     )}
                 </div>
