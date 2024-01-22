@@ -1,9 +1,23 @@
 import '../output.css';
-import { useState } from 'react';
-import CardList from './CardList';
+import { SyntheticEvent, useState } from 'react';
+import CharCard from './Card';
+import { Card } from '../models/Card';
 
 export default function Main() {
     const [charType, setCharType] = useState<string>('Character');
+    const [charList, setCharList] = useState<Card[]>([]);
+
+    const GenerateNewChar = (e: SyntheticEvent) => {
+        e.preventDefault();
+        var card = new Card();
+        card.setHeader(charType);
+        charList.unshift(card);
+        setCharList(charList);
+        setCharType('');
+    }
+    
+
+
     return(
         <div>
             <div className="bg-sky-300/20">
@@ -11,7 +25,7 @@ export default function Main() {
             </div>
             <br />
             <div>
-                <form className="pl-2">
+                <form className="pl-2"  onSubmit={GenerateNewChar}>
                     <p>I need a <input list="CharTypes" placeholder = "Character" value={charType} onChange={e =>setCharType(e.target.value)}/> <button>Go</button></p>
                     <datalist id = "CharTypes">
                         <option value = "Character"/>
@@ -24,9 +38,15 @@ export default function Main() {
                         <option value = "Sidekick"/>
                     </datalist>
                 </form>
-                <CardList 
-                    charType={charType}
-                />
+                <div id="CardList">
+                    {charList.length === 0 ? 
+                    (<p>make a character by pressing the button</p>) : 
+                    (
+                        charList.map(charList => {
+                            return <CharCard char= {charList}/>
+                        })
+                    )}
+                </div>
             </div>
         </div>
     )
