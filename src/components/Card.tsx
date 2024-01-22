@@ -10,8 +10,8 @@ export default function CharCard(props: {char: Card}) {
     })
 
     return(
-        <div>
-            <p>Success, here is a {charType}</p>
+        <div className="p-2">
+            <p>Success, here is a {charType}. </p>
 
         </div>
     )

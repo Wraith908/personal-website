@@ -20,9 +20,9 @@ export class Card {
 
     public shortDescriptor() {
         if (this.charSubClass === "") {
-            return this.race + " " + this.charClass;
+            return this.gender + " " + this.race + " " + this.charClass;
         }
-        return this.race + " " + this.charSubClass + " " + this.charClass;
+        return this.gender + " " + this.race + " " + this.charSubClass + " " + this.charClass;
     }
 
     public header() {

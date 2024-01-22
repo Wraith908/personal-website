@@ -4,13 +4,25 @@ import CharCard from './Card';
 import { Card } from '../models/Card';
 
 export default function Main() {
-    const [charType, setCharType] = useState<string>('Character');
+    const [charType, setCharType] = useState<string>('');
     const [charList, setCharList] = useState<Card[]>([]);
 
     const GenerateNewChar = (e: SyntheticEvent) => {
+        /*
+            This function generates the card by picking random elements 
+            from the JSON lists that are tagged with the charType selected by the user
+        */
         e.preventDefault();
+        /* verify charType */
         var card = new Card();
         card.setHeader(charType);
+        /* randomly determine 
+            1. fname and lnam
+            2. gender, race and class
+            3. problem
+            4. goal
+            5. patron if applicable
+        */
         charList.unshift(card);
         setCharList(charList);
         setCharType('');
@@ -29,7 +41,7 @@ export default function Main() {
                     <p>I need a <input list="CharTypes" placeholder = "Character" value={charType} onChange={e =>setCharType(e.target.value)}/> <button>Go</button></p>
                     <datalist id = "CharTypes">
                         <option value = "Character"/>
-                        {/*villains*/}
+                        {/*Villains*/}
                         <option value = "Villain"/>
                         <option value = "Lackey"/>
                         <option value = "Monster"/>
@@ -40,7 +52,7 @@ export default function Main() {
                 </form>
                 <div id="CardList">
                     {charList.length === 0 ? 
-                    (<p>make a character by pressing the button</p>) : 
+                    (<p className="p-1 pl-2">Make a character by pressing the button</p>) : 
                     (
                         charList.map(charList => {
                             return <CharCard char= {charList}/>
