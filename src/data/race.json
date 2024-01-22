@@ -1,0 +1,23 @@
+{
+    "Race": [
+        "Human",
+        "Dwarf",
+        "Elf",
+        "Half-elf",
+        "Githzerai",
+        "Githyanki",
+        "Aarakocra",
+        "Halfling",
+        "Half-giant",
+        "Aasimar",
+        "Tiefling",
+        "Jann",
+        "Tabaxi",
+        "Sahaugin",
+        "Dragonborn",
+        "Pixie",
+        "Duergar",
+        "Gnome",
+        "Svirfneblin"
+    ]
+}
