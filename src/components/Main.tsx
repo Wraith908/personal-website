@@ -1,6 +1,6 @@
 import '../output.css';
 import { SyntheticEvent, useState } from 'react';
-import CardList from './CardList';
+import CharCard from './Card';
 import { Card } from '../models/Card';
 
 export default function Main() {
@@ -41,7 +41,11 @@ export default function Main() {
                 <div id="CardList">
                     {charList.length === 0 ? 
                     (<p>make a character by pressing the button</p>) : 
-                    (<p>well done</p>)}
+                    (
+                        charList.map(charList => {
+                            return <CharCard char= {charList}/>
+                        })
+                    )}
                 </div>
             </div>
         </div>
