@@ -36,8 +36,16 @@ export class Card {
     public header() {
         return this.charType;
     }
-
+    //Set Functions
     public setHeader(props: string) {
         this.charType = props;
+    }
+
+    public setFirstName() {
+
+    }
+
+    public setLastName(props:string) {
+        this.lastName = props;
     }
 }

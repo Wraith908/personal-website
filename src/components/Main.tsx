@@ -5,12 +5,12 @@ import CharCard from './Card';
 /*model imports*/
 import { Card } from '../models/Card';
 /*data imports*/
-import fnames from '../data/fnames.json';
+import lNames from '../data/surnames.json';
 
 export default function Main() {
     const [charType, setCharType] = useState<string>('');
     const [charList, setCharList] = useState<Card[]>([]);
-
+    const surnames = lNames.Surnames;
     const GenerateNewChar = (e: SyntheticEvent) => {
         /*
             This function generates the card by picking random elements 
@@ -20,6 +20,7 @@ export default function Main() {
         /* verify charType */
         var card = new Card();
         card.setHeader(charType);
+        card.setLastName(surnames[Math.floor(Math.random() * surnames.length -1)]);
         /* randomly determine 
             1. fname and lname
             2. gender, race and class
