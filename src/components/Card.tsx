@@ -19,7 +19,7 @@ export default function CharCard(props: {char: Card}) {
 
     return(
         <div className="p-2">
-            <h3>{charType}</h3>
+            <h3>{charName}, a {charType}</h3>
             <p></p>
         </div>
     )
