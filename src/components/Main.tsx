@@ -44,14 +44,13 @@ export default function Main() {
                 <form className="pl-2"  onSubmit={GenerateNewChar}>
                     <p>I need a <input list="CharTypes" placeholder = "Character" value={charType} onChange={e =>setCharType(e.target.value)}/> <button>Go</button></p>
                     <datalist id = "CharTypes">
-                        <option value = "Character"/>
+                        <option value = "Main Character"/>
+                        <option value = "Supporting Character"/>
                         {/*Villains*/}
                         <option value = "Villain"/>
-                        <option value = "Lackey"/>
                         <option value = "Monster"/>
                         {/*Heroes*/}
                         <option value = "Hero"/>
-                        <option value = "Sidekick"/>
                     </datalist>
                 </form>
                 <div id="CardList">
