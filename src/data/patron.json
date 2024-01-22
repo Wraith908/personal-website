@@ -1,0 +1,12 @@
+{
+    "Patron":[
+        ["Vecna","God","NE"],
+        ["Silvanus","God","NN"],
+        ["Bahamut","God","LG"],
+        ["Tiamat","God","CE"],
+        ["Tyr","God","LG"],
+        ["Torm","God","LG"],
+        ["Ilmater","God","LN"],
+        ["Moradin","God","NG"]
+    ]
+}

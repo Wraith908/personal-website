@@ -1,0 +1,36 @@
+{
+    "Vowels": [
+        "a","e","i","o","u","y",
+        "ee","ea","ei","ae","ay","oo","ou","oa","eo","au",
+        "ar","aw"
+    ],
+    "Non-vowels":[
+        "b","c","d","f","g","h","j","k","l","m","n",
+        "p","q","r","s","t","w","x","z",
+        "gh","th","sh","ph","wh","qu","ch","zh",
+        "sl","st","sp","sk","squ","sw","sb","sv","sm","sn",
+        "pl","pr",
+        "tr","tw",
+        "wr",
+        "dr","dw",
+        "gr","gy","gl",
+        "kr","kl","cr","cl","chr","chl",
+        "phr","phl",
+        "br","bl",
+        "mn",
+        "nz",
+        "zz","tt",
+        "ll",
+        "mm","nn",
+        "rr",
+        "ff",
+        "gg","pp"
+    ],
+    "post vowel end-only":[
+        "rf", "rph","rn","rm","rx",
+        "nth","nz","lz","nth",
+        "lth","lph","lf","lx","lt",
+        "wm","wn"
+
+    ]
+}
