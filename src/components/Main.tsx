@@ -5,11 +5,11 @@ import CharCard from './Card';
 /*model imports*/
 import { Card } from '../models/Card';
 /*data imports*/
-import fnames from '../data/fnames.json';
 
 export default function Main() {
     const [charType, setCharType] = useState<string>('');
     const [charList, setCharList] = useState<Card[]>([]);
+    const genderList = ['male',  'female', 'nonbinary'];
 
     const GenerateNewChar = (e: SyntheticEvent) => {
         /*

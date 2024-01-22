@@ -19,8 +19,9 @@ export default function CharCard(props: {char: Card}) {
 
     return(
         <div className="p-2">
-            <h3>{charType}</h3>
-            <p></p>
+            <h3>{charName}, {charType}</h3>
+            <p>A {charDescriptor} {charMotive}</p>
+            <p>{charReferences}</p>
         </div>
     )
 }
