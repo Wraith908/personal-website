@@ -3,11 +3,15 @@ export class Card {
         public charType = "",
         public firstName ="",
         public lastName = "",
+        public gender = "",
         public race = "",
         public charClass = "",
         public charSubClass = "",
         public problem = "",
-        public goal = ""
+        public goal = "",
+        public patron = "", 
+        public misc = "",
+        public pageRef = ""
     ) {}
 
     public name() {

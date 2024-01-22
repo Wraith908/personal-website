@@ -11,7 +11,7 @@ export default function Main() {
         e.preventDefault();
         var card = new Card();
         card.setHeader(charType);
-        charList.push(card);
+        charList.unshift(card);
         setCharList(charList);
         setCharType('');
     }
