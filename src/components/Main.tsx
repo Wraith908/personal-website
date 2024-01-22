@@ -1,7 +1,11 @@
 import '../output.css';
 import { SyntheticEvent, useState } from 'react';
+/*component imports*/
 import CharCard from './Card';
+/*model imports*/
 import { Card } from '../models/Card';
+/*data imports*/
+import fnames from '../data/fnames.json';
 
 export default function Main() {
     const [charType, setCharType] = useState<string>('');
@@ -17,7 +21,7 @@ export default function Main() {
         var card = new Card();
         card.setHeader(charType);
         /* randomly determine 
-            1. fname and lnam
+            1. fname and lname
             2. gender, race and class
             3. problem
             4. goal

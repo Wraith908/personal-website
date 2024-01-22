@@ -25,6 +25,14 @@ export class Card {
         return this.gender + " " + this.race + " " + this.charSubClass + " " + this.charClass;
     }
 
+    public motivation() {
+        return "seeks to " + this.goal + " for " + this.patron + " and must " + this.problem;
+    }
+
+    public references () {
+        return this.pageRef;
+    }
+
     public header() {
         return this.charType;
     }
