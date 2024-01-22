@@ -1,16 +1,32 @@
 import '../output.css';
 import { SyntheticEvent, useState } from 'react';
+/*component imports*/
 import CharCard from './Card';
+/*model imports*/
 import { Card } from '../models/Card';
+/*data imports*/
+import fnames from '../data/fnames.json';
 
 export default function Main() {
-    const [charType, setCharType] = useState<string>('Character');
+    const [charType, setCharType] = useState<string>('');
     const [charList, setCharList] = useState<Card[]>([]);
 
     const GenerateNewChar = (e: SyntheticEvent) => {
+        /*
+            This function generates the card by picking random elements 
+            from the JSON lists that are tagged with the charType selected by the user
+        */
         e.preventDefault();
+        /* verify charType */
         var card = new Card();
         card.setHeader(charType);
+        /* randomly determine 
+            1. fname and lname
+            2. gender, race and class
+            3. problem
+            4. goal
+            5. patron if applicable
+        */
         charList.unshift(card);
         setCharList(charList);
         setCharType('');
@@ -39,7 +55,7 @@ export default function Main() {
                 </form>
                 <div id="CardList">
                     {charList.length === 0 ? 
-                    (<p>make a character by pressing the button</p>) : 
+                    (<p className="p-1 pl-2">Make a character by pressing the button</p>) : 
                     (
                         charList.map(charList => {
                             return <CharCard char= {charList}/>
