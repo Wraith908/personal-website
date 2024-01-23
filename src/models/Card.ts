@@ -27,9 +27,12 @@ export class Card {
     }
 
     public motivation() {
-        return "seeks to " + this.goal + " for " + this.patron + " and is " + this.challenge;
+        return this.goal + " and " + this.challenge;
     }
 
+    public miscellaneous() {
+        return this.misc;
+    }
     public references () {
         return this.pageRef;
     }
@@ -42,8 +45,8 @@ export class Card {
         this.charType = props;
     }
 
-    public setFirstName() {
-
+    public setFirstName(props: string) {
+        this.firstName = props;
     }
 
     public setLastName(props:string) {
@@ -72,6 +75,14 @@ export class Card {
 
     public setGoal(props: string) {
         this.goal = props;
+    }
+
+    public setPatron(props: string) {
+        this.patron = props;
+    }
+
+    public setMisc(props: string) {
+        this.misc = props;
     }
 
     public addReference(props: string) {
