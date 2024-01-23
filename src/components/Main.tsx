@@ -17,13 +17,14 @@ export default function Main() {
     const [charType, setCharType] = useState<string>('');
     const [charList, setCharList] = useState<Card[]>([]);
     const [count, setCount] = useState(0);
-    const surnames = dataSurname.Surnames;
-    const races = dataRace.Race;
-    const classes = dataClass.Class;
-    const backgrounds = dataBackground.Background;
-    const challenges = dataChallenge.Challenge;
-    const goals = dataGoal.Goal;
+    const surnames = dataSurname['Surnames'];
+    const races = dataRace['Race'];
+    const classes = dataClass['Class'];
+    const backgrounds = dataBackground['Background'];
+    const challenges = dataChallenge['Challenge'];
+    const goals = dataGoal['Goal'];
     const genders = ['masculine', 'feminine', 'androgynous'];
+
 
     const GenerateNewChar = (e: SyntheticEvent) => {
         /*
@@ -32,9 +33,12 @@ export default function Main() {
         */
         e.preventDefault();
         /* verify charType */
+        enum charTypes {'Character','Villain','Lackey','Monster','Hero','Sidekick'}
+        
         var card = new Card();
         card.setHeader(charType);
         /*Name*/
+        card.setFirstName('');
         card.setLastName(surnames[Math.floor(Math.random() * surnames.length )]);
         /*Ancestry, gender presentation, class*/
         card.setGenderPres(genders[Math.floor(Math.random() * genders.length)]);
