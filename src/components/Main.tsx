@@ -12,6 +12,7 @@ import dataBackground from '../data/background.json';
 import dataChallenge from '../data/challenge.json';
 import dataGoal from '../data/goal.json';
 import dataSyllables from '../data/syllables.json';
+import { title } from 'process';
 const vowels = dataSyllables['Vowels'];
 const nonvowels = dataSyllables['Non-vowels'];
 const endings   = dataSyllables['post-vowel-end-only'];
@@ -24,7 +25,7 @@ const goals = dataGoal['Goal'];
 const genders = ['masculine', 'feminine', 'androgynous'];
 
 export default function Main() {
-    const [charType, setCharType] = useState<string>('');
+    const [charType, setCharType] = useState<string>('Character');
     const [charList, setCharList] = useState<Card[]>([]);
     const [count, setCount] = useState(0);
     const [inputError, setInputError] = useState(false);
@@ -45,12 +46,14 @@ export default function Main() {
         })
         if (tightrope) {
             var card = new Card();
+            card.setID(count);
+            setCount(count + 1);
             card.setHeader(charType);
             /*Name*/
             card.setFirstName(genFirstName());
             card.setLastName(surnames[Math.floor(Math.random() * surnames.length )]);
             /*Ancestry, gender presentation, class*/
-            card.setGenderPres(genders[Math.floor(Math.random() * genders.length)]);
+            card.setGenderPres(titleCaseWord(genders[Math.floor(Math.random() * genders.length)]));
             card.setRace(races[Math.floor(Math.random() * races.length)]);
             var classIndex = Math.floor(Math.random() * classes.length);
             card.setClass(classes[classIndex][0]);
@@ -61,7 +64,6 @@ export default function Main() {
             card.setGoal(goals[Math.floor(Math.random() * goals.length)][0]);
             charList.unshift(card);
             setCharList(charList);
-            setCharType('');
             setInputError(false);
         } else {
             setInputError(true);
@@ -99,7 +101,7 @@ export default function Main() {
                     (<p className="p-1 pl-2">Make a character by pressing the button</p>) : 
                     (
                         charList.map(charList => {
-                            return <CharCard char= {charList} key = {count} />
+                            return <CharCard char= {charList} key = {charList.id} />
                         })
                     )}
                 </div>
@@ -138,12 +140,12 @@ function genFirstName(){
                 i = 10; //end 
             }
         }
-        // console.log(`Loop iteration ${i + 1}`);
       }
 
     return titleCaseWord(varFirstName);
 }
+
 function titleCaseWord(word: string) {
     if (!word) return word;
     return word[0].toUpperCase() + word.substr(1).toLowerCase();
-    }
+}
