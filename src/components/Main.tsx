@@ -11,12 +11,15 @@ import dataClass from '../data/class.json';
 import dataBackground from '../data/background.json';
 import dataChallenge from '../data/challenge.json';
 import dataGoal from '../data/goal.json';
-
+import dataSyllables from '../data/syllables.json';
 
 export default function Main() {
     const [charType, setCharType] = useState<string>('');
     const [charList, setCharList] = useState<Card[]>([]);
     const [count, setCount] = useState(0);
+    const vowels = dataSyllables['Vowels'];
+    const nonvowels = dataSyllables['Non-vowels'];
+    const endings   = dataSyllables['post-vowel-end-only'];
     const surnames = dataSurname.Surnames;
     const races = dataRace.Race;
     const classes = dataClass.Class;
@@ -35,6 +38,7 @@ export default function Main() {
         var card = new Card();
         card.setHeader(charType);
         /*Name*/
+        card.setFirstName(genFirstName() );
         card.setLastName(surnames[Math.floor(Math.random() * surnames.length )]);
         /*Ancestry, gender presentation, class*/
         card.setGenderPres(genders[Math.floor(Math.random() * genders.length)]);
@@ -86,4 +90,11 @@ export default function Main() {
             </div>
         </div>
     )
+}
+
+function genFirstName(){
+    var varFirstName:string;
+    varFirstName = "";
+
+    return varFirstName;
 }
