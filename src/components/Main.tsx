@@ -12,23 +12,22 @@ import dataBackground from '../data/background.json';
 import dataChallenge from '../data/challenge.json';
 import dataGoal from '../data/goal.json';
 import dataSyllables from '../data/syllables.json';
-
 const vowels = dataSyllables['Vowels'];
 const nonvowels = dataSyllables['Non-vowels'];
 const endings   = dataSyllables['post-vowel-end-only'];
+const surnames = dataSurname['Surnames'];
+const races = dataRace['Race'];
+const classes = dataClass['Class'];
+const backgrounds = dataBackground['Background'];
+const challenges = dataChallenge['Challenge'];
+const goals = dataGoal['Goal'];
+const genders = ['masculine', 'feminine', 'androgynous'];
 
 export default function Main() {
     const [charType, setCharType] = useState<string>('');
     const [charList, setCharList] = useState<Card[]>([]);
     const [count, setCount] = useState(0);
     const [inputError, setInputError] = useState(false);
-    const surnames = dataSurname['Surnames'];
-    const races = dataRace['Race'];
-    const classes = dataClass['Class'];
-    const backgrounds = dataBackground['Background'];
-    const challenges = dataChallenge['Challenge'];
-    const goals = dataGoal['Goal'];
-    const genders = ['masculine', 'feminine', 'androgynous'];
 
 
     const GenerateNewChar = (e: SyntheticEvent) => {
