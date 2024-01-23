@@ -20,13 +20,14 @@ export default function Main() {
     const vowels = dataSyllables['Vowels'];
     const nonvowels = dataSyllables['Non-vowels'];
     const endings   = dataSyllables['post-vowel-end-only'];
-    const surnames = dataSurname.Surnames;
-    const races = dataRace.Race;
-    const classes = dataClass.Class;
-    const backgrounds = dataBackground.Background;
-    const challenges = dataChallenge.Challenge;
-    const goals = dataGoal.Goal;
+    const surnames = dataSurname['Surnames'];
+    const races = dataRace['Race'];
+    const classes = dataClass['Class'];
+    const backgrounds = dataBackground['Background'];
+    const challenges = dataChallenge['Challenge'];
+    const goals = dataGoal['Goal'];
     const genders = ['masculine', 'feminine', 'androgynous'];
+
 
     const GenerateNewChar = (e: SyntheticEvent) => {
         /*
@@ -35,6 +36,8 @@ export default function Main() {
         */
         e.preventDefault();
         /* verify charType */
+        enum charTypes {'Character','Villain','Lackey','Monster','Hero','Sidekick'}
+        
         var card = new Card();
         card.setHeader(charType);
         /*Name*/
