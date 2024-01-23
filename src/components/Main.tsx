@@ -109,11 +109,24 @@ function genFirstName(){
         }
         else{
             vowelNext = 1;
-            
-            varFirstName = varFirstName + nonvowels[Math.floor(Math.random() * nonvowels.length)];
+            if (i > 2) {
+                if (Math.random() > 0.5) {
+                    varFirstName = varFirstName + endings[Math.floor(Math.random() * endings.length)];   
+                    i = 10; //end     
+                }
+            }
+            else{
+                varFirstName = varFirstName + nonvowels[Math.floor(Math.random() * nonvowels.length)];
+            }
 
         }
-        console.log(`Loop iteration ${i + 1}`);
+        
+        if (i > 2) {
+            if (Math.random() > 0.5) {
+                i = 10; //end 
+            }
+        }
+        // console.log(`Loop iteration ${i + 1}`);
       }
 
     return varFirstName;
