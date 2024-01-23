@@ -1,8 +1,9 @@
 {
     "Vowels": [
         "a","e","i","o","u","y",
-        "ee","ea","ei","ae","ay","oo","ou","oa","eo","au",
-        "ar","aw"
+        "a","e","i","o","u",
+        "a","e","i","o","u",
+        "ee","ea","ei","ae","ay","oo","ou","oa","eo","au"
     ],
     "Non-vowels":[
         "b","c","d","f","g","h","j","k","l","m","n",
@@ -24,7 +25,11 @@
         "mm","nn",
         "rr",
         "ff",
-        "gg","pp"
+        "gg","pp",
+        "b","c","d","f","g","h","j","k","l","m","n",
+        "p","q","r","s","t","w","x","z",
+        "b","c","d","f","g","h","j","k","l","m","n",
+        "p","q","r","s","t","w","x","z"
     ],
     "post-vowel-end-only":[
         "rf", "rph","rn","rm","rx",
