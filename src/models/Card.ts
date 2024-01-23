@@ -1,5 +1,6 @@
 export class Card {
     constructor(
+        public id = 0,
         public charType = "",
         public firstName ="",
         public lastName = "",
@@ -41,6 +42,9 @@ export class Card {
         return this.charType;
     }
     //Set Functions
+    public setID(props: number ) {
+        this.id = props;
+    }
     public setHeader(props: string) {
         this.charType = props;
     }
