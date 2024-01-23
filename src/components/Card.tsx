@@ -2,7 +2,7 @@ import '../output.css';
 import { useState, useEffect } from 'react';
 import { Card } from '../models/Card';
 
-export default function CharCard(props: {char: Card, key: number}) {
+export default function CharCard(props: {char: Card}) {
     const [charType, setCharType] = useState('');
     const [charName, setCharName] = useState('');
     const [charDescriptor, setCharDescriptor] = useState('');
