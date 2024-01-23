@@ -1,19 +1,19 @@
 {
     "Goal":[
-        ["on a quest for","rare item, patron, villain, NPC"],
-        ["lying low til the authorites stop looking",""],
-        ["seeking a position of authority",""],
-        ["looking to build wealth through trade",""],
-        ["researching arcane knowledge","rare item, patron, villain, NPC"],
-        ["investigating profane secrets","rare item, patron, villain, NPC"],
-        ["after a quick score from an easy mark",""],
-        ["planning to double-cross their boss",""],
-        ["quietly pilfering portable valuables on the sly",""],
-        ["trying to impress their aloof beloved",""],
-        ["showing off to the local talent",""],
-        ["running an illicit cabal",""],
-        ["overstating how great they are to anyone who'll listen",""],
-        ["on the run for capital crimes",""],
-        ["seeking to clear their name against treasonous fabrications",""]
+        ["on a quest","for","rare item, patron, villain, NPC"],
+        ["lying low til the authorites stop looking","",""],
+        ["seeking a position of authority","",""],
+        ["looking to build wealth through trade","",""],
+        ["researching arcane knowledge","about","rare item, patron, villain, NPC"],
+        ["investigating profane secrets","concerning","rare item, patron, villain, NPC"],
+        ["after a quick score from an easy mark","",""],
+        ["planning to double-cross their boss","","patron, villain,NPC"],
+        ["quietly pilfering portable valuables on the sly","",""],
+        ["trying to impress their aloof beloved","",""],
+        ["showing off to the local talent","",""],
+        ["running an illicit cabal","",""],
+        ["overstating how great they are to anyone who'll listen","",""],
+        ["on the run for capital crimes","",""],
+        ["seeking to clear their name against treasonous fabrications","made by","villain, NPC"]
     ]
 }
