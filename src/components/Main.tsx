@@ -13,13 +13,14 @@ import dataChallenge from '../data/challenge.json';
 import dataGoal from '../data/goal.json';
 import dataSyllables from '../data/syllables.json';
 
+const vowels = dataSyllables['Vowels'];
+const nonvowels = dataSyllables['Non-vowels'];
+const endings   = dataSyllables['post-vowel-end-only'];
+
 export default function Main() {
     const [charType, setCharType] = useState<string>('');
     const [charList, setCharList] = useState<Card[]>([]);
     const [count, setCount] = useState(0);
-    const vowels = dataSyllables['Vowels'];
-    const nonvowels = dataSyllables['Non-vowels'];
-    const endings   = dataSyllables['post-vowel-end-only'];
     const surnames = dataSurname['Surnames'];
     const races = dataRace['Race'];
     const classes = dataClass['Class'];
@@ -97,7 +98,23 @@ export default function Main() {
 
 function genFirstName(){
     var varFirstName:string;
+    var vowelNext:number;
     varFirstName = "";
+    vowelNext = Math.round(Math.random());
+     
+    for (let i = 0; i < 10; i++) {
+        if (vowelNext === 1){
+            vowelNext = 0;
+            varFirstName = varFirstName + vowels[Math.floor(Math.random() * vowels.length)];
+        }
+        else{
+            vowelNext = 1;
+            
+            varFirstName = varFirstName + nonvowels[Math.floor(Math.random() * nonvowels.length)];
+
+        }
+        console.log(`Loop iteration ${i + 1}`);
+      }
 
     return varFirstName;
 }
