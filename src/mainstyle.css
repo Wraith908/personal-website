@@ -1,0 +1,30 @@
+body {
+  background-color: #A0C49D;
+}
+.title {
+  color: #4e664b;
+}
+.card {
+  background-image: linear-gradient(to bottom right, #E1ECC8, #F7FFE5);
+  max-width: 400px;
+  margin: 10px;
+  padding: 5px;
+  display: inline-block;
+  align-items: center;
+}
+.card .cardName {
+  color: #4e664b;
+  max-width: 190px;
+  display: inline-block;
+  margin: 0px;
+}
+.card .cardType {
+  color: #4e664b;
+  text-align: right;
+  max-width: 190px;
+  float: right;
+  margin: 0px;
+}
+.card p {
+  display: block;
+}

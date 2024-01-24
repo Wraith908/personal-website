@@ -1,4 +1,4 @@
-import '../output.css';
+import '../mainstyle.css';
 import { SyntheticEvent, useState } from 'react';
 /*component imports*/
 import CharCard from './Card';
@@ -75,30 +75,28 @@ export default function Main() {
 
     return(
         <div>
-            <div className="bg-sky-300/20">
-                <h1 className="p-2 pl-4 text-xl">Dungeon Master Character Inspiration App</h1>
+            <div>
+                <h1 className = "title">Dungeon Master Character Inspiration App</h1>
             </div>
             <br />
             <div>
-                <form className="pl-2"  onSubmit={GenerateNewChar}>
-                    <p>I need a {inputError ? 
-                    <input list="CharTypes" placeholder = "Character" value={charType} onChange={e =>setCharType(e.target.value)} className='border-orange-700'/>:
-                    <input list="CharTypes" placeholder = "Character" value={charType} onChange={e =>setCharType(e.target.value)}/>} <button>Go</button></p>
+                <form onSubmit={GenerateNewChar} className = "charform">
+                    <p>I need a <input list="CharTypes" placeholder = "Character" value={charType} onChange={e =>setCharType(e.target.value)}/><button>Go</button></p>
                     <datalist id = "CharTypes">
                         <option value = "Character"/>
                         {/*Villains*/}
                         <option value = "Villain"/>
                         <option value = "Lackey"/>
-                        <option value = "Monster"/>
+                        {/*<option value = "Monster"/>*/}
                         {/*Heroes*/}
                         <option value = "Hero"/>
                         <option value = "Sidekick"/>
                     </datalist>
-                    {inputError && <p>Please try again</p>}
+                    {inputError && <p className = "error">Please try again</p>}
                 </form>
-                <div id="CardList">
+                <div id="CardList" className = "cardlist">
                     {charList.length === 0 ? 
-                    (<p className="p-1 pl-2">Make a character by pressing the button</p>) : 
+                    (<p>Make a character by pressing the button</p>) : 
                     (
                         charList.map(charList => {
                             return <CharCard char= {charList} key = {charList.id} />

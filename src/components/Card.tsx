@@ -1,4 +1,4 @@
-import '../output.css';
+import '../mainstyle.css';
 import { useState, useEffect } from 'react';
 import { Card } from '../models/Card';
 
@@ -20,8 +20,8 @@ export default function CharCard(props: {char: Card}) {
     })
 
     return(
-        <div className="p-2">
-            <h3>{charName}, a {charType}</h3>
+        <div className = "card">
+            <h3 className="cardName">{charName}</h3><h4 className="cardType">{charType}</h4>
             <p>{charDescriptor}, {charHistory} {charMotive}</p>
             <p>References: {charReferences} </p>
         </div>
