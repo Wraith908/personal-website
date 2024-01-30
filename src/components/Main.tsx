@@ -12,6 +12,7 @@ import dataBackground from '../data/background.json';
 import dataChallenge from '../data/challenge.json';
 import dataGoal from '../data/goal.json';
 import dataSyllables from '../data/syllables.json';
+import AppLogo from '../media/AppLogo.png';
 import { title } from 'process';
 const vowels = dataSyllables['Vowels'];
 const nonvowels = dataSyllables['Non-vowels'];
@@ -75,25 +76,28 @@ export default function Main() {
 
     return(
         <div>
-            <div>
-                <h1 className = "title">Dungeon Master Character Inspiration App</h1>
+            <div  className = "title">
+                <img src = {AppLogo} alt = "Logo" className = "Logo"/>
+                <h1>Dungeon Master Character Inspiration App</h1>
             </div>
             <br />
             <div>
-                <form onSubmit={GenerateNewChar} className = "charform">
-                    <p>I need a <input list="CharTypes" placeholder = "Character" value={charType} onChange={e =>setCharType(e.target.value)}/><button>Go</button></p>
-                    <datalist id = "CharTypes">
-                        <option value = "Character"/>
-                        {/*Villains*/}
-                        <option value = "Villain"/>
-                        <option value = "Lackey"/>
-                        {/*<option value = "Monster"/>*/}
-                        {/*Heroes*/}
-                        <option value = "Hero"/>
-                        <option value = "Sidekick"/>
-                    </datalist>
-                    {inputError && <p className = "error">Please try again</p>}
-                </form>
+                <div  className = "charform">
+                    <form onSubmit={GenerateNewChar}>
+                        <label>I need a </label>
+                        <select id = "charlist" className = "charselect" value={charType} onChange={e =>setCharType(e.target.value)}>
+                            <option value = "Character">Character</option>
+                            {/*Villains*/}
+                            <option value = "Villain">Villain</option>
+                            <option value = "Lackey">Lackey</option>
+                            {/*<option value = "Monster"/>*/}
+                            {/*Heroes*/}
+                            <option value = "Hero">Hero</option>
+                            <option value = "Sidekick">Sidekick</option>
+                        </select> <button>Go</button>
+                    </form>
+                    
+                </div>
                 <div id="CardList" className = "cardlist">
                     {charList.length === 0 ? 
                     (<p>Make a character by pressing the button</p>) : 
