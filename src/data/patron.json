@@ -8,6 +8,11 @@
         ["Torm","God","LG"],
         ["Ilmater","God","LN"],
         ["Amarok","God","CG"],
-        ["Moradin","God","NG"]
+        ["Moradin","God","NG"],
+        ["Mystra","God","NG"],
+        ["Shar","God",""],
+        ["Selune","God",""],
+        ["Helm","God",""],
+        ["Lolth","God",""]
     ]
 }
