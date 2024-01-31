@@ -1,4 +1,4 @@
-import '../output.css';
+import '../mainstyle.css';
 
 export default function FooterDetails() {
 
