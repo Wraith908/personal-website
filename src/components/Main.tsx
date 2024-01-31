@@ -130,6 +130,9 @@ function genFirstName(){
                     varFirstName = varFirstName + endings[Math.floor(Math.random() * endings.length)];   
                     i = 10; //end     
                 }
+                else{
+                    varFirstName = varFirstName + nonvowels[Math.floor(Math.random() * nonvowels.length)];
+                }
             }
             else{
                 varFirstName = varFirstName + nonvowels[Math.floor(Math.random() * nonvowels.length)];
