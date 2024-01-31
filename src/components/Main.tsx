@@ -1,4 +1,4 @@
-import '../output.css';
+import '../mainstyle.css';
 import { SyntheticEvent, useState } from 'react';
 /*component imports*/
 import CharCard from './Card';
@@ -12,6 +12,7 @@ import dataBackground from '../data/background.json';
 import dataChallenge from '../data/challenge.json';
 import dataGoal from '../data/goal.json';
 import dataSyllables from '../data/syllables.json';
+import AppLogo from '../media/AppLogo.png';
 import { title } from 'process';
 const vowels = dataSyllables['Vowels'];
 const nonvowels = dataSyllables['Non-vowels'];
@@ -75,30 +76,31 @@ export default function Main() {
 
     return(
         <div>
-            <div className="bg-sky-300/20">
-                <h1 className="p-2 pl-4 text-xl">Dungeon Master Character Inspiration App</h1>
+            <div  className = "title">
+                <img src = {AppLogo} alt = "Logo" className = "Logo"/>
+                <h1>Dungeon Master Character Inspiration App</h1>
             </div>
             <br />
             <div>
-                <form className="pl-2"  onSubmit={GenerateNewChar}>
-                    <p>I need a {inputError ? 
-                    <input list="CharTypes" placeholder = "Character" value={charType} onChange={e =>setCharType(e.target.value)} className='border-orange-700'/>:
-                    <input list="CharTypes" placeholder = "Character" value={charType} onChange={e =>setCharType(e.target.value)}/>} <button>Go</button></p>
-                    <datalist id = "CharTypes">
-                        <option value = "Character"/>
-                        {/*Villains*/}
-                        <option value = "Villain"/>
-                        <option value = "Lackey"/>
-                        <option value = "Monster"/>
-                        {/*Heroes*/}
-                        <option value = "Hero"/>
-                        <option value = "Sidekick"/>
-                    </datalist>
-                    {inputError && <p>Please try again</p>}
-                </form>
-                <div id="CardList">
+                <div  className = "charform">
+                    <form onSubmit={GenerateNewChar}>
+                        <label>I need a </label>
+                        <select id = "charlist" className = "charselect" value={charType} onChange={e =>setCharType(e.target.value)}>
+                            <option value = "Character">Character</option>
+                            {/*Villains*/}
+                            <option value = "Villain">Villain</option>
+                            <option value = "Lackey">Lackey</option>
+                            {/*<option value = "Monster"/>*/}
+                            {/*Heroes*/}
+                            <option value = "Hero">Hero</option>
+                            <option value = "Sidekick">Sidekick</option>
+                        </select> <button>Go</button>
+                    </form>
+                    
+                </div>
+                <div id="CardList" className = "cardlist">
                     {charList.length === 0 ? 
-                    (<p className="p-1 pl-2">Make a character by pressing the button</p>) : 
+                    (<p>Make a character by pressing the button</p>) : 
                     (
                         charList.map(charList => {
                             return <CharCard char= {charList} key = {charList.id} />

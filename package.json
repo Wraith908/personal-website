@@ -40,6 +40,7 @@
     ]
   },
   "devDependencies": {
-    "@types/react": "^18.2.48"
+    "@types/react": "^18.2.48",
+    "less": "^4.2.0"
   }
 }

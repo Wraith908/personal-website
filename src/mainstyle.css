@@ -1,0 +1,42 @@
+body {
+  background-color: #A0C49D;
+}
+.title {
+  color: #364734;
+  display: inline-flex;
+  align-content: center;
+}
+.card {
+  background-image: linear-gradient(to bottom right, #E1ECC8, #F7FFE5);
+  max-width: 400px;
+  margin: 10px;
+  padding: 5px;
+  display: inline-block;
+  align-items: center;
+}
+.card .cardName {
+  color: #364734;
+  max-width: 190px;
+  display: inline-block;
+  margin: 0px;
+}
+.card .cardType {
+  color: #364734;
+  text-align: right;
+  max-width: 190px;
+  float: right;
+  margin: 0px;
+}
+.card p {
+  display: block;
+  color: #364734;
+}
+.charform {
+  padding-left: 10px;
+  margin-bottom: 5px;
+  color: #364734;
+}
+.Logo {
+  width: 90px;
+  height: 75px;
+}

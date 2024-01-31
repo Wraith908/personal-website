@@ -1,0 +1,63 @@
+@primary: #A0C49D;
+@secondary: #C4D7B2;
+@tertiary: #E1ECC8;
+@quartary: #F7FFE5;
+@text-contrast: #364734;
+
+body {
+    background-color: @primary;
+}
+
+.title {
+    color: @text-contrast;
+    display:inline-flex;
+    align-content:center;
+}
+
+.card {
+    background-image: linear-gradient(to bottom right, @tertiary,@quartary);
+    max-width: 400px;
+    margin: 10px;
+    padding:5px;
+    display: inline-block;
+    align-items: center;
+    .cardName {
+        color: @text-contrast;
+        max-width:190px;
+        display: inline-block;
+        margin: 0px;
+    }
+    .cardType {
+        color: @text-contrast;
+        text-align: right;
+        max-width:190px;
+        float: right;
+        margin: 0px;
+    }
+    p {
+        display: block;
+        color:@text-contrast;
+    }
+}
+
+.charform {
+    padding-left: 10px;
+    margin-bottom: 5px;
+    color: @text-contrast;
+    select {
+        
+    }
+    .charselect {
+
+    }
+    button {
+
+    }
+}
+
+.Logo {
+    width: 90px;
+    height: 75px;
+}
+
+
