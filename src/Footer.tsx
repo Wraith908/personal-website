@@ -1,12 +1,12 @@
 import React from 'react';
-import './output.css';
+import './mainstyle.css';
 import FooterDetails from './components/FooterDetails';
 
 function Footer() {
   return (
-    <div className="footer block">
+    <footer>
       <FooterDetails />
-    </div>
+    </footer>
   );
 }
 
