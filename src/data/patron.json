@@ -89,6 +89,7 @@
         ["Thor","God","CG"],
         ["Thrym","God","CE"],
         ["Tyr","God","LN"],
-        ["Uller","God","CN"]
+        ["Uller","God","CN"],
+        ["nature","","NN"]
     ]
 }
