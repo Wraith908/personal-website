@@ -13,7 +13,6 @@ import dataChallenge from '../data/challenge.json';
 import dataGoal from '../data/goal.json';
 import dataSyllables from '../data/syllables.json';
 import AppLogo from '../media/AppLogo.png';
-import { ImportsNotUsedAsValues } from 'typescript';
 const vowels = dataSyllables['Vowels'];
 const nonvowels = dataSyllables['Non-vowels'];
 const endings   = dataSyllables['post-vowel-end-only'];
@@ -90,7 +89,7 @@ export default function Main() {
                             {/*Villains*/}
                             <option value = "Villain">Villain</option>
                             <option value = "Lackey">Lackey</option>
-                            {/*<option value = "Monster"/>*/}
+                            {/*<option value = "Monster">Monster</option>*/}
                             {/*Heroes*/}
                             <option value = "Hero">Hero</option>
                             <option value = "Sidekick">Sidekick</option>
