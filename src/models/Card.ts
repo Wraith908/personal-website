@@ -24,11 +24,11 @@ export class Card {
     }
 
     public charHistory() {
-        return "they spent time as a " + this.background;
+        return "they were " + this.background + ", ";
     }
 
     public motivation() {
-        return this.goal + " and " + this.challenge;
+        return "are " + this.goal + " and " + this.challenge;
     }
 
     public miscellaneous() {
