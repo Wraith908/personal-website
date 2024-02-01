@@ -385,6 +385,7 @@
         ["is terrified of religion","",""],
         ["is terrified of authority figures","",""],
         ["is terrified of white things","",""],
+        ["is terrified of black things","",""],
         ["is terrified of large things","",""],
         ["is terrified of small things","",""],
         ["is terrified of death","",""],
@@ -428,6 +429,8 @@
         ["is a time-traveller from the distant past","",""],
         ["is from another world","",""],
         ["is from another plane","",""],
+        ["has bloodshot eyes","",""],
+        ["ignores anyone poor looking","",""],
         ["is really a cyborg from the future","",""],
         ["is really a giant flesh covered mech-suit for a tiny alien","",""]
     ]

@@ -23,7 +23,7 @@ const classes = dataClass['Class'];
 const backgrounds = dataBackground['Background'];
 const challenges = dataChallenge['Challenge'];
 const goals = dataGoal['Goal'];
-const genders = ['masculine', 'feminine', 'androgynous'];
+const genders = ['A masculine', 'A feminine', 'An androgynous'];
 
 export default function Main() {
     const [charType, setCharType] = useState<string>('Character');
