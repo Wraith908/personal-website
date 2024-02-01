@@ -14,6 +14,8 @@ import dataGoal from '../data/goal.json';
 import dataSyllables from '../data/syllables.json';
 import AppLogo from '../media/AppLogo.png';
 import { title } from 'process';
+import Footer from '../Footer';
+import FooterDetails from './FooterDetails';
 const vowels = dataSyllables['Vowels'];
 const nonvowels = dataSyllables['Non-vowels'];
 const endings   = dataSyllables['post-vowel-end-only'];
@@ -75,7 +77,7 @@ export default function Main() {
 
 
     return(
-        <div>
+        <div className = "main">
             <div  className = "title">
                 <img src = {AppLogo} alt = "Logo" className = "Logo"/>
                 <h1>Dungeon Master Character Inspiration App</h1>
