@@ -17,7 +17,7 @@ export default function CharCard(props: {char: Card}) {
         setCharHistory(props.char.charHistory());
         setCharMotive(props.char.motivation());
         setCharReferences(props.char.references());
-    })
+    }, [props.char])
 
     return(
         <div className = "card">
