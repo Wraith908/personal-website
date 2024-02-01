@@ -20,7 +20,7 @@ export class Card {
     }
 
     public shortDescriptor() {
-        return this.genderPres + " " + this.race + " who is a " + this.charClass + ".";
+        return this.genderPres + " " + this.race + " and " + this.charClass + ".";
     }
 
     public charHistory() {
