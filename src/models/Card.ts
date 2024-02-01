@@ -20,15 +20,15 @@ export class Card {
     }
 
     public shortDescriptor() {
-        return this.genderPres + " " + this.race + " " + this.charClass;
+        return this.genderPres + " " + this.race + " who is a " + this.charClass + ".";
     }
 
     public charHistory() {
-        return "they were " + this.background + ", ";
+        return "They were " + this.background + ", ";
     }
 
     public motivation() {
-        return "are " + this.goal + " and " + this.challenge;
+        return "are " + this.goal + " and " + this.challenge + ".";
     }
 
     public miscellaneous() {
