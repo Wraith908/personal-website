@@ -1,6 +1,9 @@
 body {
   background-color: #A0C49D;
 }
+#root {
+  min-height: 100vh;
+}
 .title {
   color: #364734;
   display: inline-flex;
@@ -41,8 +44,8 @@ body {
   height: 75px;
 }
 footer {
-  text-align: center;
   position: absolute;
+  text-align: center;
   bottom: 0px;
   width: 100%;
 }

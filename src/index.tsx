@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import Main from './components/Main';
 import Footer from './Footer';
 import reportWebVitals from './reportWebVitals';
+import './mainstyle.css';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
