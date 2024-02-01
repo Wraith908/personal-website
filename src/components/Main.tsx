@@ -13,6 +13,7 @@ import dataChallenge from '../data/challenge.json';
 import dataGoal from '../data/goal.json';
 import dataSyllables from '../data/syllables.json';
 import AppLogo from '../media/AppLogo.png';
+import { ImportsNotUsedAsValues } from 'typescript';
 const vowels = dataSyllables['Vowels'];
 const nonvowels = dataSyllables['Non-vowels'];
 const endings   = dataSyllables['post-vowel-end-only'];
@@ -77,7 +78,7 @@ export default function Main() {
         <div className = "main">
             <div  className = "title">
                 <img src = {AppLogo} alt = "Logo" className = "Logo"/>
-                <h1>Dungeon Master Character Inspiration App</h1>
+                <h1>NPCinator</h1>
             </div>
             <br />
             <div>
@@ -94,6 +95,7 @@ export default function Main() {
                             <option value = "Hero">Hero</option>
                             <option value = "Sidekick">Sidekick</option>
                         </select> <button>Go</button>
+                        {inputError && <p>An error has occured, please try again</p>}
                     </form>
                     
                 </div>
