@@ -54,7 +54,8 @@ export default function Main() {
             card.setLastName(surnames[Math.floor(Math.random() * surnames.length )]);
             /*Ancestry, gender presentation, class*/
             card.setGenderPres(titleCaseWord(genders[Math.floor(Math.random() * genders.length)]));
-            card.setRace(races[Math.floor(Math.random() * races.length)]);
+            var raceIndex = Math.floor(Math.random() * races.length);
+            card.setRace(races[raceIndex][0]);
             var classIndex = Math.floor(Math.random() * classes.length);
             card.setClass(classes[classIndex][0]);
             card.addReference(classes[classIndex][1])
