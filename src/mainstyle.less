@@ -9,12 +9,30 @@ body {
 }
 
 #root {
+    /* Phone */
     position: relative;
-    min-height: 100vh;
+    min-height: 150vh;
+    @media (min-width: 480px) {
+        /* Ipad */
+        min-height: 125vh;
+    }
+    @media (min-width: 768px) {
+        /* Small Screen and up */
+        min-height: 100vh;
+    }
 }
 
 .main {
-    padding-bottom: 210px;
+    padding-bottom: 50%;
+    @media (min-width: 480px) {
+
+    }
+    @media (min-width: 768px) {
+
+    }
+    @media (min-width: 1200px) {
+
+    }
 }
 
 .title {
@@ -25,33 +43,63 @@ body {
 
 .card {
     background-image: linear-gradient(to bottom right, @tertiary,@quartary);
-    max-width: 400px;
-    margin: 10px;
-    padding:5px;
     display: inline-block;
     align-items: center;
     .cardName {
         color: @text-contrast;
-        max-width:190px;
         display: inline-block;
         margin: 0px;
     }
     .cardType {
         color: @text-contrast;
-        text-align: right;
-        max-width:190px;
+        text-align: right; 
         float: right;
-        margin: 0px;
     }
     p {
         display: block;
         color:@text-contrast;
     }
+    @media (min-width: 480px) {
+        max-width: 30%;
+        margin: 0.5%;
+        padding:0.5%;
+        .cardName {
+            max-width: 45%;
+        }
+        .cardType {
+            max-width: 45%;
+            margin: 0px;
+        }
+    }
+    @media (min-width: 768px) {
+        max-width: 30%;
+        margin: 0.5%;
+        padding:0.5%;
+        .cardName {
+            max-width: 45%;
+        }
+        .cardType {
+            max-width: 45%;
+            margin: 0px;
+        }
+    }
+    @media (min-width: 1200px) {
+        max-width: 30%;
+        margin: 0.5%;
+        padding:0.5%;
+        .cardName {
+            max-width: 45%;
+        }
+        .cardType {
+            max-width: 45%;
+            margin: 0px;
+        }
+    }
 }
 
 .charform {
-    padding-left: 10px;
-    margin-bottom: 5px;
+    padding-left: 0.5%;
+    margin-bottom: 0.5%;
     color: @text-contrast;
     select {
         
@@ -74,4 +122,12 @@ footer {
     bottom: 0;
     text-align: center;
     width: 100%;
+    color: @text-contrast;
+    font-size: 0.5em;
+    @media (min-width: 768px) {
+        font-size: 1em;
+    }
+    @media (min-width: 1200px) {
+        
+    }
 }
