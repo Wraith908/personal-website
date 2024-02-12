@@ -310,6 +310,13 @@
         ["hunting warriors for sport","",""],
         ["looking to confirm their existing beliefs","",""],
         ["sending for reinforcements","",""],
+        ["asking to borrow money","",""],
+        ["training to become a knight","",""],
+        ["training to become a mage","",""],
+        ["training to become a scholar","",""],
+        ["training to become a bard","",""],
+        ["training to become a warrior","",""],
+        ["will grant wishes in exchange for freedom from enslavement in a magic lamp","",""],
         ["seeking to clear their name against treasonous fabrications","made by","villain, NPC"]
     ]
 }
