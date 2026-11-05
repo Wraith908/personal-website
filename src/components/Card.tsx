@@ -9,6 +9,7 @@ export default function CharCard(props: {char: Card}) {
     const [charHistory, setCharHistory] = useState('');
     const [charMotive, setCharMotive] = useState('');
     const [charReferences, setCharReferences] = useState('');
+    const [charPatron, setCharPatron] = useState('');
     
     useEffect(() => {
         setCharType(props.char.header());
@@ -17,12 +18,14 @@ export default function CharCard(props: {char: Card}) {
         setCharHistory(props.char.charHistory());
         setCharMotive(props.char.motivation());
         setCharReferences(props.char.references());
+        setCharPatron(props.char.patronSupport());
     }, [props.char])
 
     return(
         <div className = "card">
             <h3 className="cardName">{charName}</h3><h4 className="cardType">{charType}</h4>
             <p>{charDescriptor} {charHistory} {charMotive}</p>
+            <p>{charDescriptor} {charHistory} {charMotive} {charPatron}</p>
             <p>References: {charReferences} </p>
         </div>
     )
