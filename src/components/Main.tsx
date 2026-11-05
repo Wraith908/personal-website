@@ -12,6 +12,7 @@ import dataBackground from '../data/background.json';
 import dataChallenge from '../data/challenge.json';
 import dataGoal from '../data/goal.json';
 import dataSyllables from '../data/syllables.json';
+import dataPatron from '../data/patron.json';
 import AppLogo from '../media/AppLogo.png';
 const vowels = dataSyllables['Vowels'];
 const nonvowels = dataSyllables['Non-vowels'];
@@ -23,6 +24,12 @@ const backgrounds = dataBackground['Background'];
 const challenges = dataChallenge['Challenge'];
 const goals = dataGoal['Goal'];
 const genders = ['A masculine', 'A feminine', 'An androgynous'];
+const patrons = dataPatron['Patron'].filter(
+    (entry): entry is string[] =>
+        Array.isArray(entry) &&
+        typeof entry[0] === 'string' &&
+        entry[0].trim().length > 0
+);
 
 export default function Main() {
     const [charType, setCharType] = useState<string>('Character');
@@ -63,6 +70,7 @@ export default function Main() {
             card.setBackground(backgrounds[Math.floor(Math.random() * backgrounds.length)]);
             card.setChallenge(challenges[Math.floor(Math.random() * challenges.length)][0]);
             card.setGoal(goals[Math.floor(Math.random() * goals.length)][0]);
+            card.setPatron(patrons[Math.floor(Math.random() * patrons.length)][0]);
             charList.unshift(card);
             setCharList(charList);
             setInputError(false);
