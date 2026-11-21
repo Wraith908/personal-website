@@ -30,6 +30,10 @@ export class Card {
     public motivation() {
         return "are " + this.goal + " and " + this.challenge + ".";
     }
+    
+    public patronSupport() {
+        return "They are a follower of " + this.patron + ".";
+    }
 
     public miscellaneous() {
         return this.misc;
