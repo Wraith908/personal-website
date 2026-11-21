@@ -24,7 +24,6 @@ export default function CharCard(props: {char: Card}) {
     return(
         <div className = "card">
             <h3 className="cardName">{charName}</h3><h4 className="cardType">{charType}</h4>
-            <p>{charDescriptor} {charHistory} {charMotive}</p>
             <p>{charDescriptor} {charHistory} {charMotive} {charPatron}</p>
             <p>References: {charReferences} </p>
         </div>
