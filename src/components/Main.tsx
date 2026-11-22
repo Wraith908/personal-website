@@ -54,7 +54,7 @@ export default function Main() {
         if (tightrope) {
             var card = new Card();
             card.setID(count);
-            setCount(count + 1);
+            setCount(previous => previous + 1);
             card.setHeader(charType);
             /*Name*/
             card.setFirstName(genFirstName());
@@ -71,8 +71,7 @@ export default function Main() {
             card.setChallenge(challenges[Math.floor(Math.random() * challenges.length)][0]);
             card.setGoal(goals[Math.floor(Math.random() * goals.length)][0]);
             card.setPatron(patrons[Math.floor(Math.random() * patrons.length)][0]);
-            charList.unshift(card);
-            setCharList(charList);
+            setCharList(previous => [card, ...previous]);
             setInputError(false);
         } else {
             setInputError(true);
