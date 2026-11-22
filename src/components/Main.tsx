@@ -1,5 +1,11 @@
 import '../mainstyle.css';
-import { SyntheticEvent, useState } from 'react';
+import { SyntheticEvent, useState, useEffect } from 'react';
+
+import {
+  subscribeToUpdates,
+  applyAvailableUpdate
+} from '../pwaUpdates';
+
 /*component imports*/
 import CharCard from './Card';
 /*model imports*/
@@ -37,6 +43,23 @@ export default function Main() {
     const [count, setCount] = useState(0);
     const [inputError, setInputError] = useState(false);
 
+    const [updateAvailable, setUpdateAvailable] = useState(false);
+
+    // Receive update notifications from Workbox.
+    useEffect(() => {
+      return subscribeToUpdates(setUpdateAvailable);
+    }, []);
+
+    // Automatically update only when there are no cards.
+    useEffect(() => {
+      if (
+        updateAvailable &&
+        charList.length === 0 &&
+        navigator.onLine
+      ) {
+        applyAvailableUpdate();
+      }
+    }, [updateAvailable, charList.length]);
 
     const GenerateNewChar = (e: SyntheticEvent) => {
         /*
@@ -86,6 +109,18 @@ export default function Main() {
             <div  className = "title">
                 <img src = {AppLogo} alt = "Logo" className = "Logo"/>
                 <h1>NPCinator</h1>
+
+                {updateAvailable && charList.length > 0 && (
+                <button
+                    type="button"
+                    className="update-button"
+                    onClick={applyAvailableUpdate}
+                    title="Install the latest version of NPCinator"
+                >
+                    Update available
+                </button>
+                )}
+
             </div>
             <br />
             <div>
