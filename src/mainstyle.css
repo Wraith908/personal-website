@@ -124,3 +124,10 @@ footer {
   outline: 2px solid #d6a64c;
   outline-offset: 3px;
 }
+
+.build-info {
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  opacity: 0.65;
+  text-align: center;
+}
