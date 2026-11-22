@@ -86,6 +86,10 @@ export default function Main() {
             card.setGenderPres(titleCaseWord(genders[Math.floor(Math.random() * genders.length)]));
             var raceIndex = Math.floor(Math.random() * races.length);
             card.setRace(races[raceIndex][0]);
+            // Add the race sourcebook/page reference
+            if (races[raceIndex][1]) {
+                card.addReference(races[raceIndex][1]);
+            }
             var classIndex = Math.floor(Math.random() * classes.length);
             card.setClass(classes[classIndex][0]);
             card.addReference(classes[classIndex][1])
