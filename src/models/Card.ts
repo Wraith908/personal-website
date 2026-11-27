@@ -20,19 +20,19 @@ export class Card {
     }
 
     public shortDescriptor() {
-        return this.genderPres + " " + this.race + " and " + this.charClass + ".";
+        return `${this.genderPres} ${this.race} and ${this.charClass}.`;
     }
 
     public charHistory() {
-        return "They were " + this.background + ", ";
+        return `They were ${this.background.trim()}.`;
     }
 
     public motivation() {
-        return "are " + this.goal + " and " + this.challenge + ".";
+        return `They are ${this.goal.trim()}. They ${this.challenge.trim()}.`;
     }
-    
+
     public patronSupport() {
-        return "They are a follower of " + this.patron + ".";
+        return `They follow ${this.patron.trim()}.`;
     }
 
     public miscellaneous() {
