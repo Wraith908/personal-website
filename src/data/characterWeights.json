@@ -1,0 +1,51 @@
+
+{
+    "Character": {},
+    "Hero": {
+        "altruistic": 5,
+        "honourable": 4,
+        "courageous": 4,
+        "compassionate": 4,
+        "duty": 3,
+        "redemption": 3,
+        "exploration": 2,
+        "cruel": 0.2,
+        "selfish": 0.5,
+        "manipulative": 0.5
+    },
+    "Villain": {
+        "cruel": 5,
+        "manipulative": 5,
+        "power": 4,
+        "corruption": 4,
+        "ambition": 3,
+        "deceptive": 3,
+        "criminal": 3,
+        "revenge": 3,
+        "selfish": 3,
+        "leadership": 2,
+        "altruistic": 0.3,
+        "compassionate": 0.5
+    },
+    "Lackey": {
+        "servitude": 5,
+        "loyalty": 4,
+        "criminal": 3,
+        "wealth": 3,
+        "cowardly": 2,
+        "deceptive": 2,
+        "survival": 2,
+        "leadership": 0.3
+    },
+    "Sidekick": {
+        "loyalty": 5,
+        "compassionate": 3,
+        "duty": 3,
+        "courageous": 3,
+        "eccentric": 2,
+        "exploration": 2,
+        "altruistic": 2,
+        "cruel": 0.3,
+        "manipulative": 0.5
+    }
+}

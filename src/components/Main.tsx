@@ -23,6 +23,7 @@ import dataChallenge from '../data/challenge.json';
 import dataGoal from '../data/goal.json';
 import dataSyllables from '../data/syllables.json';
 import dataPatron from '../data/patron.json';
+import { weightedPick } from '../weightedPick';
 import AppLogo from '../media/AppLogo.png';
 const vowels = dataSyllables['Vowels'];
 const nonvowels = dataSyllables['Non-vowels'];
@@ -102,9 +103,17 @@ export default function Main() {
             addReferences(card, charClass);
 
             /* Background, goal, challenge and patron */
-            card.setBackground(randomEntry(backgrounds).text);
-            card.setChallenge(randomEntry(challenges).text);
-            card.setGoal(randomEntry(goals).text);
+            card.setBackground(
+                weightedPick(backgrounds, charType).text
+            );
+
+            card.setChallenge(
+                weightedPick(challenges, charType).text
+            );
+
+            card.setGoal(
+                weightedPick(goals, charType).text
+            );
             card.setPatron(randomEntry(patrons).text);
             
             setCharList(previous => [card, ...previous]);
