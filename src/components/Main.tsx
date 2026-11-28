@@ -146,7 +146,7 @@ export default function Main() {
             <div>
                 <div  className = "charform">
                     <form onSubmit={GenerateNewChar}>
-                        <label>I need a </label>
+                        <label htmlFor="charlist">I need a </label>
                         <select id = "charlist" className = "charselect" value={charType} onChange={e =>setCharType(e.target.value)}>
                             <option value = "Character">Character</option>
                             {/*Villains*/}
