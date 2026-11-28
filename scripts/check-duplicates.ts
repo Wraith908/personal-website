@@ -1,20 +1,15 @@
 
 import fs from 'node:fs';
 
-const files = [
-  'race',
-  'class',
-  'background',
-  'challenge',
-  'goal',
-  'patron',
-  'surnames'
-];
-
-interface EntryLocation {
-  line: number;
-  content: string;
-}
+const datasets = {
+    race: 'Race',
+    class: 'Class',
+    background: 'Background',
+    challenge: 'Challenge',
+    goal: 'Goal',
+    patron: 'Patron',
+    surnames: 'Surnames'
+} as const;
 
 function canonicalise(value: unknown): unknown {
     if (Array.isArray(value)) {
@@ -39,60 +34,52 @@ function canonicalise(value: unknown): unknown {
 
 let totalDuplicates = 0;
 
-for (const name of files) {
-  const path = `src/data/${name}.json`;
-  const lines = fs.readFileSync(path, 'utf8')
-    .split(/\r?\n/);
+for (const [name, key] of Object.entries(datasets)) {
+    const path = `src/data/${name}.json`;
 
-  const seen = new Map<string, EntryLocation>();
-  let duplicates = 0;
+    const root = JSON.parse(
+        fs.readFileSync(path, 'utf8')
+    );
 
-  lines.forEach((line, index) => {
-    const trimmed = line.trim().replace(/,$/, '');
+    const entries: unknown[] = root[key];
 
-    let entry: unknown;
-
-    try {
-      entry = JSON.parse(trimmed);
-    } catch {
-      return;
+    if (!Array.isArray(entries)) {
+        throw new Error(`Invalid dataset: ${path}`);
     }
 
-    if (
-      typeof entry !== 'string' &&
-      (entry === null || typeof entry !== 'object')
-    ) {
-      return;
-    }
+    const seen = new Map<string, number>();
+    let duplicates = 0;
 
-    const key = JSON.stringify(canonicalise(entry));
-    const previous = seen.get(key);
+    entries.forEach((entry, index) => {
+        const fingerprint = JSON.stringify(
+            canonicalise(entry)
+        );
 
-    if (previous) {
-      if (duplicates === 0) {
-        console.log(`\n${path}`);
-      }
+        const previous = seen.get(fingerprint);
 
-      console.log(
-        `  Line ${previous.line}: ${previous.content}`
-      );
-      console.log(
-        `  Line ${index + 1}: ${line.trim()}`
-      );
-      console.log('');
+        if (previous !== undefined) {
+            console.error(
+                `${path}: duplicate entries ` +
+                `${previous + 1} and ${index + 1}`
+            );
 
-      duplicates++;
-    } else {
-      seen.set(key, {
-        line: index + 1,
-        content: line.trim()
-      });
-    }
-  });
+            console.error(JSON.stringify(entry));
 
-  totalDuplicates += duplicates;
+            duplicates++;
+        } else {
+            seen.set(fingerprint, index);
+        }
+    });
 
-  console.log(`${name}: ${duplicates} duplicates`);
+    totalDuplicates += duplicates;
+
+    console.log(`${name}: ${duplicates} duplicates`);
 }
 
 console.log(`\nTotal duplicates: ${totalDuplicates}`);
+
+if (totalDuplicates > 0) {
+    console.warn(
+        `WARNING: ${totalDuplicates} duplicate entries found.`
+    );
+}

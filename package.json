@@ -10,12 +10,17 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "vite",
-    "dev": "vite",
-    "build": "tsc --noEmit && vite build",
-    "preview": "vite preview",
-    "check:duplicates": "node scripts/check-duplicates.ts"
+      "start": "vite",
+      "dev": "vite",
+      "build": "npm run check && vite build",
+      "preview": "vite preview",
+      "check:duplicates": "node scripts/check-duplicates.ts",
+      "typecheck": "tsc --noEmit && tsc -p scripts/tsconfig.json",
+      "test": "vitest run",
+      "test:watch": "vitest",
+      "check": "npm run typecheck && npm run check:duplicates && npm test"
   },
+
   "devDependencies": {
     "@types/node": "^22.20.5",
     "@types/react": "^18.2.48",
@@ -24,6 +29,7 @@
     "typescript": "^5.9.3",
     "vite": "^8.3.8",
     "vite-plugin-pwa": "^2.0.0",
+    "vitest": "^5.1.2",
     "workbox-core": "^7.4.1",
     "workbox-precaching": "^7.4.1"
   }
