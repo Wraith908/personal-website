@@ -131,3 +131,101 @@ footer {
   opacity: 0.65;
   text-align: center;
 }
+
+/* Individual NPC field controls */
+
+.card {
+    vertical-align: top;
+    overflow-wrap: anywhere;
+    box-sizing: border-box;
+    padding: 12px;
+    border-radius: 4px;
+    text-align: left;
+}
+
+.cardHeader {
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #A0C49D;
+}
+
+.card .cardName {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    margin: 0;
+    font-size: 1.17em;
+    line-height: 1.4;
+}
+
+.card .cardType {
+    display: block;
+    float: none;
+    width: auto;
+    margin-top: 2px;
+    text-align: left;
+    font-size: 0.8em;
+    font-weight: normal;
+    color: #52684D;
+}
+
+.card .cardIdentity,
+.card .cardNarrative {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
+.rerollable-field {
+    display: inline;
+}
+
+.field-ending {
+    white-space: nowrap;
+}
+
+.reroll-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: baseline;
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 4px;
+    background: transparent;
+    color: #52684D;
+    font-size: 0.85rem;
+    font-weight: bold;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.reroll-button::before {
+    content: "↻";
+}
+
+.reroll-button:hover {
+    background: #C4D7B2;
+    color: #364734;
+}
+
+.reroll-button:active {
+    background: #A0C49D;
+}
+
+.reroll-button:focus-visible {
+    outline: 2px solid #364734;
+    outline-offset: 1px;
+}
+
+.card .cardReferences {
+    font-size: 0.8em;
+    line-height: 1.4;
+    border-top: 1px solid #A0C49D;
+    padding-top: 8px;
+    margin: 10px 0 0;
+}

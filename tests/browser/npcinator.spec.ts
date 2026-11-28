@@ -203,3 +203,117 @@ test('NPC generation works offline', async ({
         await context.setOffline(false);
     }
 });
+
+
+test('individual fields can be re-rolled', async ({ page }) => {
+    await page.goto('/');
+
+    const generate = page.getByRole('button', {
+        name: 'Go'
+    });
+
+    await generate.click();
+    await generate.click();
+
+    const cards = page.locator('.card');
+
+    await expect(cards).toHaveCount(2);
+
+    const target = cards.first();
+    const other = cards.nth(1);
+
+    await expect(
+        other.locator('.cardName')
+    ).toHaveText(/\S/);
+
+    const otherBefore = await other.innerText();
+
+    const fields = [
+        ['firstName', 'first name'],
+        ['lastName', 'surname'],
+        ['genderPres', 'gender'],
+        ['race', 'ancestry'],
+        ['charClass', 'class'],
+        ['background', 'background'],
+        ['goal', 'goal'],
+        ['challenge', 'challenge'],
+        ['patron', 'patron']
+    ];
+
+    for (const [field, label] of fields) {
+        const before: Record<string, string> = {};
+
+        for (const [key] of fields) {
+            const locator = target.locator(
+                `[data-field="${key}"]`
+            );
+
+            await expect(locator).toHaveText(/\S/);
+
+            before[key] = await locator.innerText();
+        }
+
+        await target.getByRole('button', {
+            name: `Re-roll ${label}`,
+            exact: true
+        }).click();
+
+        for (const [key] of fields) {
+            const locator = target.locator(
+                `[data-field="${key}"]`
+            );
+
+            if (key === field) {
+                await expect(locator)
+                    .not.toHaveText(before[key]);
+            } else {
+                await expect(locator)
+                    .toHaveText(before[key]);
+            }
+        }
+
+        await expect(other).toHaveText(otherBefore, {
+            useInnerText: true
+        });
+    }
+
+    await expect(cards).toHaveCount(2);
+});
+
+test('field re-roll works offline', async ({
+    page,
+    context
+}) => {
+    await page.goto('/');
+
+    await page.waitForFunction(
+        () => !!navigator.serviceWorker?.controller
+    );
+
+    await context.setOffline(true);
+
+    try {
+        await page.reload();
+
+        await page.getByRole('button', {
+            name: 'Go'
+        }).click();
+
+        const card = page.locator('.card').first();
+
+        const goal = card.locator('[data-field="goal"]');
+
+        await expect(goal).toHaveText(/\S/);
+
+        const original = await goal.innerText();
+
+        await card.getByRole('button', {
+            name: 'Re-roll goal',
+            exact: true
+        }).click();
+
+        await expect(goal).not.toHaveText(original);
+    } finally {
+        await context.setOffline(false);
+    }
+});

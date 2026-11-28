@@ -1,99 +1,54 @@
-export class Card {
-    constructor(
-        public id = 0,
-        public charType = "",
-        public firstName ="",
-        public lastName = "",
-        public genderPres = "",
-        public race = "",
-        public charClass = "",
-        public background = "",
-        public challenge = "",
-        public goal = "",
-        public patron = "", 
-        public misc = "",
-        public pageRef = ""
-    ) {}
 
-    public name() {
-        return this.firstName + " " + this.lastName;
-    }
+import type {
+    DataEntry,
+    PatronEntry
+} from './DataEntry';
 
-    public shortDescriptor() {
-        return `${this.genderPres} ${this.race} and ${this.charClass}.`;
-    }
+export interface Card {
+    id: number;
+    charType: string;
+    firstName: string;
+    lastName: string;
+    genderPres: string;
+    race: DataEntry;
+    charClass: DataEntry;
+    background: DataEntry;
+    challenge: DataEntry;
+    goal: DataEntry;
+    patron: PatronEntry;
+}
 
-    public charHistory() {
-        return `They were ${this.background.trim()}.`;
-    }
+export type RerollField =
+    | 'firstName'
+    | 'lastName'
+    | 'genderPres'
+    | 'race'
+    | 'charClass'
+    | 'background'
+    | 'challenge'
+    | 'goal'
+    | 'patron';
 
-    public motivation() {
-        return `They are ${this.goal.trim()}. They ${this.challenge.trim()}.`;
-    }
+export function cardReferences(card: Card): string {
+    const entries = [
+        card.race,
+        card.charClass,
+        card.background,
+        card.goal,
+        card.challenge,
+        card.patron
+    ];
 
-    public patronSupport() {
-        return `They follow ${this.patron.trim()}.`;
-    }
+    const references = entries.flatMap(entry =>
+        (entry.references ?? []).map(reference =>
+            reference.text ??
+            [reference.book, reference.pages]
+                .filter(Boolean)
+                .join(' ')
+        )
+    );
 
-    public miscellaneous() {
-        return this.misc;
-    }
-    public references () {
-        return this.pageRef;
-    }
-
-    public header() {
-        return this.charType;
-    }
-    //Set Functions
-    public setID(props: number ) {
-        this.id = props;
-    }
-    public setHeader(props: string) {
-        this.charType = props;
-    }
-
-    public setFirstName(props: string) {
-        this.firstName = props;
-    }
-
-    public setLastName(props:string) {
-        this.lastName = props;
-    }
-
-    public setGenderPres(props: string) {
-        this.genderPres = props;
-    }
-
-    public setRace(props: string) {
-        this.race = props;
-    }
-
-    public setClass(props: string) {
-        this.charClass = props;
-    }
-
-    public setBackground(props: string) {
-        this.background = props;
-    }
-
-    public setChallenge(props: string) {
-        this.challenge = props;
-    }
-
-    public setGoal(props: string) {
-        this.goal = props;
-    }
-
-    public setPatron(props: string) {
-        this.patron = props;
-    }
-
-    public setMisc(props: string) {
-        this.misc = props;
-    }
-
-    public addReference(props: string) {
-        this.pageRef += props + " ";
-    }
+    return [...new Set(
+        references.map(text => text.trim()).filter(Boolean)
+    )].join(' ');
 }

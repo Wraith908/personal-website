@@ -127,13 +127,8 @@ describe('NPCinator main screen', () => {
             within(card).getByText(/References:/)
         ).toBeInTheDocument();
 
-        expect(
-            within(card).getByText(/They were/)
-        ).toBeInTheDocument();
-
-        expect(
-            within(card).getByText(/They follow/)
-        ).toBeInTheDocument();
+        expect(card).toHaveTextContent('They were');
+        expect(card).toHaveTextContent('They follow');
     });
 
     it('preserves existing cards when generating another', async () => {
@@ -165,5 +160,112 @@ describe('NPCinator main screen', () => {
         expect(
             cards[0].querySelector('.cardType')
         ).toHaveTextContent('Villain');
+    });
+});
+
+
+describe('NPC field re-roll controls', () => {
+    const fields = [
+        ['firstName', 'first name'],
+        ['lastName', 'surname'],
+        ['genderPres', 'gender'],
+        ['race', 'ancestry'],
+        ['charClass', 'class'],
+        ['background', 'background'],
+        ['goal', 'goal'],
+        ['challenge', 'challenge'],
+        ['patron', 'patron']
+    ] as const;
+
+    it.each(fields)(
+        'independently re-rolls %s',
+        async (field, label) => {
+            const interaction = userEvent.setup();
+
+            const { container } = render(<Main />);
+
+            const generate = screen.getByRole('button', {
+                name: 'Go'
+            });
+
+            await interaction.click(generate);
+            await interaction.click(generate);
+
+            const cards = container.querySelectorAll('.card');
+
+            const target = cards[0] as HTMLElement;
+            const other = cards[1] as HTMLElement;
+
+            const otherBefore = other.textContent;
+
+            const before = Object.fromEntries(
+                fields.map(([key]) => [
+                    key,
+                    target.querySelector(
+                        `[data-field="${key}"]`
+                    )?.textContent
+                ])
+            );
+
+            await interaction.click(
+                within(target).getByRole('button', {
+                    name: `Re-roll ${label}`
+                })
+            );
+
+            const updated = container
+                .querySelectorAll('.card')[0];
+
+            for (const [key] of fields) {
+                const value = updated.querySelector(
+                    `[data-field="${key}"]`
+                )?.textContent;
+
+                if (key === field) {
+                    expect(value).not.toBe(before[key]);
+                } else {
+                    expect(value).toBe(before[key]);
+                }
+            }
+
+            expect(
+                container.querySelectorAll('.card')[1]
+                    .textContent
+            ).toBe(otherBefore);
+
+            expect(
+                container.querySelectorAll('.card')
+            ).toHaveLength(2);
+        }
+    );
+
+    it('preserves the original character type', async () => {
+        const interaction = userEvent.setup();
+
+        const { container } = render(<Main />);
+
+        await interaction.selectOptions(
+            screen.getByRole('combobox'),
+            'Hero'
+        );
+
+        await interaction.click(
+            screen.getByRole('button', { name: 'Go' })
+        );
+
+        await interaction.selectOptions(
+            screen.getByRole('combobox'),
+            'Villain'
+        );
+
+        await interaction.click(
+            screen.getByRole('button', {
+                name: 'Re-roll goal'
+            })
+        );
+
+        expect(
+            container.querySelector('.cardType')
+        ).toHaveTextContent('Hero');
     });
 });
