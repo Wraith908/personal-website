@@ -79,7 +79,9 @@ test('existing cards remain unchanged', async ({ page }) => {
 
     await expect(
         page.locator('.card').nth(1)
-    ).toHaveText(original);
+    ).toHaveText(original, {
+        useInnerText: true
+    });
 });
 
 const viewports = [

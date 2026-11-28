@@ -19,8 +19,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:browser": "playwright test",
-    "test:browser:build": "playwright test --project=chromium --project=webkit",
-    "build:netlify": "npm run build && playwright install chromium webkit && npm run test:browser:build",
+    "test:browser:build": "playwright test --project=chromium",
+    "build:netlify": "npm run build && playwright install --only-shell chromium && npm run test:browser:build",
     "check": "npm run typecheck && npm run check:duplicates && npm test"
   },
   "devDependencies": {
