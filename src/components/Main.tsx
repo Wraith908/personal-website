@@ -10,6 +10,10 @@ import {
 import CharCard from './Card';
 /*model imports*/
 import { Card } from '../models/Card';
+import type {
+    DataEntry,
+    PatronEntry
+} from '../models/DataEntry';
 /*data imports*/
 import dataSurname from '../data/surnames.json';
 import dataRace from '../data/race.json';
@@ -24,18 +28,19 @@ const vowels = dataSyllables['Vowels'];
 const nonvowels = dataSyllables['Non-vowels'];
 const endings   = dataSyllables['post-vowel-end-only'];
 const surnames = dataSurname['Surnames'];
-const races = dataRace['Race'];
-const classes = dataClass['Class'];
-const backgrounds = dataBackground['Background'];
-const challenges = dataChallenge['Challenge'];
-const goals = dataGoal['Goal'];
-const genders = ['A masculine', 'A feminine', 'An androgynous'];
-const patrons = dataPatron['Patron'].filter(
-    (entry): entry is string[] =>
-        Array.isArray(entry) &&
-        typeof entry[0] === 'string' &&
-        entry[0].trim().length > 0
-);
+
+const races = dataRace['Race'] as DataEntry[];
+const classes = dataClass['Class'] as DataEntry[];
+const backgrounds = dataBackground['Background'] as DataEntry[];
+const challenges = dataChallenge['Challenge'] as DataEntry[];
+const goals = dataGoal['Goal'] as DataEntry[];
+const patrons = dataPatron['Patron'] as PatronEntry[];
+
+const genders = [
+    'A masculine',
+    'A feminine',
+    'An androgynous'
+];
 
 export default function Main() {
     const [charType, setCharType] = useState<string>('Character');
@@ -82,22 +87,26 @@ export default function Main() {
             /*Name*/
             card.setFirstName(genFirstName());
             card.setLastName(surnames[Math.floor(Math.random() * surnames.length )]);
-            /*Ancestry, gender presentation, class*/
-            card.setGenderPres(titleCaseWord(genders[Math.floor(Math.random() * genders.length)]));
-            var raceIndex = Math.floor(Math.random() * races.length);
-            card.setRace(races[raceIndex][0]);
-            // Add the race sourcebook/page reference
-            if (races[raceIndex][1]) {
-                card.addReference(races[raceIndex][1]);
-            }
-            var classIndex = Math.floor(Math.random() * classes.length);
-            card.setClass(classes[classIndex][0]);
-            card.addReference(classes[classIndex][1])
-            /*Background, personal quirk*/
-            card.setBackground(backgrounds[Math.floor(Math.random() * backgrounds.length)]);
-            card.setChallenge(challenges[Math.floor(Math.random() * challenges.length)][0]);
-            card.setGoal(goals[Math.floor(Math.random() * goals.length)][0]);
-            card.setPatron(patrons[Math.floor(Math.random() * patrons.length)][0]);
+            
+            /* Ancestry, gender presentation, class */
+            card.setGenderPres(
+                titleCaseWord(randomEntry(genders))
+            );
+
+            const race = randomEntry(races);
+            card.setRace(race.text);
+            addReferences(card, race);
+
+            const charClass = randomEntry(classes);
+            card.setClass(charClass.text);
+            addReferences(card, charClass);
+
+            /* Background, goal, challenge and patron */
+            card.setBackground(randomEntry(backgrounds).text);
+            card.setChallenge(randomEntry(challenges).text);
+            card.setGoal(randomEntry(goals).text);
+            card.setPatron(randomEntry(patrons).text);
+            
             setCharList(previous => [card, ...previous]);
             setInputError(false);
         } else {
@@ -105,8 +114,6 @@ export default function Main() {
         }
         
     }
-    
-
 
     return(
         <div className = "main">
@@ -200,4 +207,23 @@ function genFirstName(){
 function titleCaseWord(word: string) {
     if (!word) return word;
     return word[0].toUpperCase() + word.substr(1).toLowerCase();
+}
+
+function randomEntry<T>(entries: readonly T[]): T {
+    return entries[
+        Math.floor(Math.random() * entries.length)
+    ];
+}
+
+function addReferences(card: Card, entry: DataEntry) {
+    for (const reference of entry.references ?? []) {
+        const text = reference.text ??
+            [reference.book, reference.pages]
+                .filter(Boolean)
+                .join(' ');
+
+        if (text) {
+            card.addReference(text);
+        }
+    }
 }

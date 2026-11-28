@@ -16,6 +16,27 @@ interface EntryLocation {
   content: string;
 }
 
+function canonicalise(value: unknown): unknown {
+    if (Array.isArray(value)) {
+        return value.map(canonicalise);
+    }
+
+    if (value !== null && typeof value === 'object') {
+        const object = value as Record<string, unknown>;
+
+        return Object.fromEntries(
+            Object.keys(object)
+                .sort()
+                .map(key => [
+                    key,
+                    canonicalise(object[key])
+                ])
+        );
+    }
+
+    return value;
+}
+
 let totalDuplicates = 0;
 
 for (const name of files) {
@@ -39,12 +60,12 @@ for (const name of files) {
 
     if (
       typeof entry !== 'string' &&
-      !Array.isArray(entry)
+      (entry === null || typeof entry !== 'object')
     ) {
       return;
     }
 
-    const key = JSON.stringify(entry);
+    const key = JSON.stringify(canonicalise(entry));
     const previous = seen.get(key);
 
     if (previous) {
