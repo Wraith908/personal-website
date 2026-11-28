@@ -66,20 +66,33 @@ test('existing cards remain unchanged', async ({ page }) => {
         name: 'Go'
     });
 
-    await generate.click();
-
-    const original = await page
-        .locator('.card').first().innerText();
+    const cards = page.locator('.card');
 
     await generate.click();
 
+    await expect(cards).toHaveCount(1);
+
+    const firstCard = cards.first();
+
+    // Wait for React to populate the card.
     await expect(
-        page.locator('.card')
-    ).toHaveCount(2);
+        firstCard.locator('.cardName')
+    ).toHaveText(/\S/);
+
+    await expect(firstCard).toContainText('They were');
+    await expect(firstCard).toContainText('They follow');
+
+    const original = await firstCard.innerText();
+
+    await generate.click();
+
+    await expect(cards).toHaveCount(2);
 
     await expect(
-        page.locator('.card').nth(1)
-    ).toHaveText(original, {
+        cards.first().locator('.cardName')
+    ).toHaveText(/\S/);
+
+    await expect(cards.nth(1)).toHaveText(original, {
         useInnerText: true
     });
 });
