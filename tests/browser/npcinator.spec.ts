@@ -17,7 +17,7 @@ test('home page loads correctly', async ({ page }) => {
 
     await expect(
         page.getByRole('button', {
-            name: 'Go'
+            name: 'Go', exact: true
         })
     ).toBeVisible();
 });
@@ -36,7 +36,7 @@ test('all character types generate successfully', async ({ page }) => {
             .selectOption(type);
 
         await page.getByRole('button', {
-            name: 'Go'
+            name: 'Go', exact: true
         }).click();
 
         const card = page.locator('.card').first();
@@ -63,7 +63,7 @@ test('existing cards remain unchanged', async ({ page }) => {
     await page.goto('/');
 
     const generate = page.getByRole('button', {
-        name: 'Go'
+        name: 'Go', exact: true
     });
 
     const cards = page.locator('.card');
@@ -115,7 +115,7 @@ for (const viewport of viewports) {
         await page.goto('/');
 
         const generate = page.getByRole('button', {
-            name: 'Go'
+            name: 'Go', exact: true
         });
 
         for (let i = 0; i < 5; i++) {
@@ -152,7 +152,7 @@ test('accessibility audit', async ({ page }) => {
     await page.goto('/');
 
     await page.getByRole('button', {
-        name: 'Go'
+        name: 'Go', exact: true
     }).click();
 
     const results = await new AxeBuilder({ page })
@@ -189,7 +189,7 @@ test('NPC generation works offline', async ({
         await page.reload();
 
         await page.getByRole('button', {
-            name: 'Go'
+            name: 'Go', exact: true
         }).click();
 
         await expect(
@@ -209,7 +209,7 @@ test('individual fields can be re-rolled', async ({ page }) => {
     await page.goto('/');
 
     const generate = page.getByRole('button', {
-        name: 'Go'
+        name: 'Go', exact: true
     });
 
     await generate.click();
@@ -296,7 +296,7 @@ test('field re-roll works offline', async ({
         await page.reload();
 
         await page.getByRole('button', {
-            name: 'Go'
+            name: 'Go', exact: true
         }).click();
 
         const card = page.locator('.card').first();
